@@ -34,6 +34,21 @@ export class LayoutComponent implements OnInit {
     this.routeSubscription!.unsubscribe();
   }
 
+  getReadableRoute(url: string): string {
+    if (url.startsWith('/memberships')) {
+      return 'Membresías';
+    } else if (url.startsWith('/schedule')) {
+      const parts = url.split('/');
+      if (parts.length === 3 && parts[2] !== '') {
+        return `Membresías > Cronograma > ${parts[2]}`;
+      } else {
+        return 'Cronograma';
+      }
+    } else {
+      return 'Otro';
+    }
+  }
+
   goBackToList() {
     this.router.navigate(['/memberships']);
   }
