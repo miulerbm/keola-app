@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ScheduleComponent } from '../schedule/schedule.component';
 import { Router } from '@angular/router';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 interface Package {
   id: number;
@@ -66,13 +67,19 @@ interface Suscription {
 @Component({
   selector: 'app-memberships',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, ScheduleComponent],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    ScheduleComponent,
+    MatProgressSpinner,
+  ],
   templateUrl: './memberships.component.html',
   styleUrls: ['./memberships.component.css'],
 })
 export class MembershipsComponent implements OnInit {
   suscriptions: Suscription[] = [];
   selectedSuscriptionId: number | null = null;
+  isLoading: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -81,6 +88,8 @@ export class MembershipsComponent implements OnInit {
   }
 
   fetchMemberships(): void {
+    this.isLoading = true;
+
     const userId = 12853;
     const url = `https://inclubtest.com:2053/api/suscription/payment/${userId}`;
     this.http.get<any>(url).subscribe(
@@ -90,12 +99,14 @@ export class MembershipsComponent implements OnInit {
         } else {
           alert('Error al obtener las membresías');
         }
+        this.isLoading = false;
       },
       (error) => {
         console.error('Error fetching memberships:', error);
         alert(
           'Error al obtener las membresías. Por favor, inténtelo de nuevo.'
         );
+        this.isLoading = false;
       }
     );
   }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 interface PaymentSchedule {
   idPayment: number;
@@ -36,7 +37,7 @@ interface PaymentSchedule {
 @Component({
   selector: 'app-schedule',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, MatProgressSpinner],
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css'],
 })
@@ -44,6 +45,7 @@ export class ScheduleComponent implements OnInit {
   @Input() suscriptionId!: number;
   @Output() close = new EventEmitter<void>();
   schedule: PaymentSchedule[] = [];
+  isLoading: boolean = false;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -55,6 +57,8 @@ export class ScheduleComponent implements OnInit {
   }
 
   fetchSchedule(subscriptionId: number): void {
+    this.isLoading = true;
+
     const url = `https://inclubtest.com:2053/api/payment/schedule/vouchers/${subscriptionId}/1`;
 
     this.http.get<any>(url).subscribe(
@@ -65,10 +69,12 @@ export class ScheduleComponent implements OnInit {
         } else {
           alert('Error al obtener el cronograma');
         }
+        this.isLoading = false;
       },
       (error) => {
         console.error('Error fetching schedule:', error);
         alert('Error al obtener el cronograma. Por favor, inténtelo de nuevo.');
+        this.isLoading = false;
       }
     );
   }
