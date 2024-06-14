@@ -46,7 +46,10 @@ export class LoginComponent implements OnInit {
 
         if (res && res.access_Token) {
           alert('Inicio de sesión correcto!');
+
           localStorage.setItem('accessToken', res.access_Token);
+          localStorage.setItem('tokenExpiresAt', res.dateExpire);
+
           this.router.navigateByUrl('/memberships');
         } else {
           alert('Credenciales incorrectas');
