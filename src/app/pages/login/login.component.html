@@ -1,7 +1,7 @@
 <div class="parent">
   <div class="login-container">
     <h2>Iniciar sesión</h2>
-    <form>
+    <form (ngSubmit)="onLogin()">
       <input
         type="text"
         [(ngModel)]="loginObj.username"
@@ -16,7 +16,7 @@
         placeholder="Contraseña"
         required
       />
-      <button type="button" (click)="onLogin()">Ingresar</button>
+      <button type="submit">Ingresar</button>
     </form>
   </div>
 </div>
