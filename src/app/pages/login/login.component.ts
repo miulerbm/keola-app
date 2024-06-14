@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     const token = localStorage.getItem('accessToken');
     if (token) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/memberships']);
     }
   }
 
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         if (res && res.access_Token) {
           alert('Inicio de sesión correcto!');
           localStorage.setItem('accessToken', res.access_Token);
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/memberships');
         } else {
           alert('Credenciales incorrectas');
         }
