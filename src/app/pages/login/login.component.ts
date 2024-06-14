@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -11,11 +11,18 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginObj: Login;
 
   constructor(private http: HttpClient, private router: Router) {
     this.loginObj = new Login();
+  }
+
+  ngOnInit() {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   onLogin() {
@@ -24,6 +31,7 @@ export class LoginComponent {
       .subscribe((res: any) => {
         if (res) {
           alert('Inicio de sesión correcto!');
+          localStorage.setItem('accessToken', res.access_Token);
           this.router.navigateByUrl('/dashboard');
         } else {
           alert('Credenciales incorrectas');
