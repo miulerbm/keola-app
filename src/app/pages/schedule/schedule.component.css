@@ -1,0 +1,76 @@
+.container {
+  margin-top: 20px;
+}
+
+.schedule-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.schedule-item .card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  margin-bottom: 8px;
+  font-size: 0.95em;
+}
+
+.vouchers h6 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.voucher {
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.voucher .card-text {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+.voucher-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.alert {
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 1em;
+  }
+
+  .card-text {
+    font-size: 0.85em;
+  }
+
+  .vouchers h6 {
+    font-size: 1em;
+  }
+
+  .voucher .card-text {
+    font-size: 0.8em;
+  }
+}

@@ -1,25 +1,52 @@
-<div>
-  <div>
-    <h2>Cronograma de la Suscripción {{ suscriptionId }}</h2>
-    <div *ngIf="schedule.length === 0">No se encontró cronograma.</div>
-    <div *ngFor="let item of schedule" class="schedule-item">
-      <p>Descripción: {{ item.quoteDescription }}</p>
-      <p>Fecha de Expiración: {{ item.nextExpiration | date }}</p>
-      <p>Monto en USD: {{ item.quoteUsd | currency }}</p>
-      <p>Monto en Moneda Local: {{ item.quote | currency }}</p>
-      <p>Amortización: {{ item.amortization | currency }}</p>
-      <p>Saldo de Capital: {{ item.capitalBalance | currency }}</p>
-      <p>Fecha de Pago: {{ item.payDate | date }}</p>
-      <p>Estado: {{ item.verifText }}</p>
+<div class="container my-5">
+  <h2 class="text-center mb-4">
+    Cronograma de la Suscripción {{ suscriptionId }}
+  </h2>
+  <div *ngIf="schedule.length === 0" class="alert alert-info text-center">
+    No se encontró cronograma.
+  </div>
+  <div *ngFor="let item of schedule" class="schedule-item card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ item.quoteDescription }}</h5>
+      <p class="card-text">
+        <strong>Fecha de Expiración:</strong> {{ item.nextExpiration | date }}
+      </p>
+      <p class="card-text">
+        <strong>Monto en USD:</strong> {{ item.quoteUsd | currency }}
+      </p>
+      <p class="card-text">
+        <strong>Monto en Moneda Local:</strong> {{ item.quote | currency }}
+      </p>
+      <p class="card-text">
+        <strong>Amortización:</strong> {{ item.amortization | currency }}
+      </p>
+      <p class="card-text">
+        <strong>Saldo de Capital:</strong> {{ item.capitalBalance | currency }}
+      </p>
+      <p class="card-text">
+        <strong>Fecha de Pago:</strong> {{ item.payDate | date }}
+      </p>
+      <p class="card-text"><strong>Estado:</strong> {{ item.verifText }}</p>
 
-      <div *ngIf="item.paymentVouchers && item.paymentVouchers.length > 0">
-        <h4>Vouchers</h4>
-        <div *ngFor="let voucher of item.paymentVouchers">
-          <p>Operación: {{ voucher.operationNumber }}</p>
-          <p>Método de Pago: {{ voucher.nameMethodSubTipoPago }}</p>
-          <p>Nota: {{ voucher.note }}</p>
-          <div *ngIf="voucher.base64">
-            <img [src]="voucher.base64" alt="Imagen de Voucher" />
+      <div
+        *ngIf="item.paymentVouchers && item.paymentVouchers.length > 0"
+        class="vouchers mt-3"
+      >
+        <h6>Vouchers</h6>
+        <div *ngFor="let voucher of item.paymentVouchers" class="voucher mb-2">
+          <p class="card-text">
+            <strong>Operación:</strong> {{ voucher.operationNumber }}
+          </p>
+          <p class="card-text">
+            <strong>Método de Pago:</strong> {{ voucher.nameMethodSubTipoPago }}
+          </p>
+          <p class="card-text"><strong>Nota:</strong> {{ voucher.note }}</p>
+          <div *ngIf="voucher.base64" class="voucher-image mt-2">
+            <img
+              [src]="'data:image/jpeg;base64,' + voucher.base64"
+              alt="Imagen de Voucher"
+              class="img-fluid"
+            />
           </div>
         </div>
       </div>
