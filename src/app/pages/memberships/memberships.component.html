@@ -1,5 +1,8 @@
 <div class="container my-5">
-  <div *ngIf="isLoading" class="text-center my-3">
+  <div
+    *ngIf="isLoading"
+    class="text-center align-items-center justify-content-between d-flex my-3"
+  >
     <mat-progress-spinner
       diameter="50"
       mode="indeterminate"
@@ -19,7 +22,7 @@
         <table class="custom-table">
           <thead>
             <tr>
-              <th>Nombre del Paquete</th>
+              <th>Paquete</th>
               <th>Descripción</th>
               <th>ID</th>
               <th>Estado</th>

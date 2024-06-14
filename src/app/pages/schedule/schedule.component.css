@@ -4,12 +4,26 @@
 
 .title-bar {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
+
+.back-link {
+  text-decoration: none;
+  color: inherit;
+  align-items: center;
+  display: flex;
+}
+
 .icon-display {
-  scale: 1.5;
+  font-size: 24px;
+}
+
+.title-text {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
 }
 
 .schedule-item {
@@ -56,10 +70,10 @@
 .voucher-image img {
   max-width: 100%;
   height: auto;
-  max-height: 150px; /* Limita la altura de la imagen */
+  max-height: 150px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  object-fit: contain; /* Ajusta la imagen para que se adapte sin distorsión */
+  object-fit: contain;
 }
 
 .alert {
@@ -70,24 +84,27 @@
 }
 
 @media (max-width: 768px) {
+  .title-bar {
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .icon-display {
+    font-size: 20px;
+  }
+
+  .title-text {
+    font-size: 1.2em;
+    width: 100%;
+  }
+
   .card-body {
     padding: 10px;
   }
 
   .card-title {
     font-size: 1em;
-  }
-
-  .title-bar h2 {
-    font-size: 1.2em;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  .icon-display {
-    scale: 1;
   }
 
   .table-sm th,

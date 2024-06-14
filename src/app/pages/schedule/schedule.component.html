@@ -10,22 +10,21 @@
     <p>Cargando cronograma...</p>
   </div>
   <ng-container *ngIf="!isLoading">
-    <div class="title-bar">
-      <h2 class="mb-4">
-        <a href="/">
-          <mat-icon
-            class="icon-display"
-            aria-hidden="false"
-            aria-label="Back arrow"
-          >
-            arrow_back
-          </mat-icon>
-        </a>
+    <div class="title-bar mb-4">
+      <a href="/" class="back-link">
+        <mat-icon
+          class="icon-display"
+          aria-hidden="false"
+          aria-label="Back arrow"
+        >
+          arrow_back_ios
+        </mat-icon>
+      </a>
+      <h2 class="title-text">
         Cronograma de la Suscripción {{ suscriptionId }}
         {{ schedule[0].idSuscription }}
       </h2>
     </div>
-
     <div *ngIf="schedule.length === 0" class="alert alert-info text-center">
       No se encontró cronograma.
     </div>
