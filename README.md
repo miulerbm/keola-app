@@ -21,6 +21,12 @@ El proyecto consta de 3 pantallas:
 ![Login page](/public/images/login.png)
 
 - Brinda una interfaz para que el usuario ingrese con sus credenciales.
+- Los datos de acceso son los mismo que en el ejemplo:
+
+{
+"username": "master",
+"password": "Inclub1245#"
+}
 
 ### Memberships
 
