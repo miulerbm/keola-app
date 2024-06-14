@@ -1,0 +1,10 @@
+.navbar-brand {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: block;
+  width: fit-content; /* Opcional, ajusta el ancho según el contenido */
+}
+
+.icon-display {
+  transform: scale(1.5);
+}

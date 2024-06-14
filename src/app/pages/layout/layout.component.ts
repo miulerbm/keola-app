@@ -3,11 +3,12 @@ import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { CurrentRouteService } from '../../service/current-route.service';
 import { Subscription } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MatIconModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })

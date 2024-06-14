@@ -1,6 +1,7 @@
 <div class="container my-5">
   <h2 class="text-center mb-4">
     Cronograma de la Suscripción {{ suscriptionId }}
+    {{ schedule[0].idSuscription }}
   </h2>
   <div *ngIf="schedule.length === 0" class="alert alert-info text-center">
     No se encontró cronograma.
