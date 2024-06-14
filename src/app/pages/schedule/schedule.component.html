@@ -1,0 +1,28 @@
+<div>
+  <div>
+    <h2>Cronograma de la Suscripción {{ suscriptionId }}</h2>
+    <div *ngIf="schedule.length === 0">No se encontró cronograma.</div>
+    <div *ngFor="let item of schedule" class="schedule-item">
+      <p>Descripción: {{ item.quoteDescription }}</p>
+      <p>Fecha de Expiración: {{ item.nextExpiration | date }}</p>
+      <p>Monto en USD: {{ item.quoteUsd | currency }}</p>
+      <p>Monto en Moneda Local: {{ item.quote | currency }}</p>
+      <p>Amortización: {{ item.amortization | currency }}</p>
+      <p>Saldo de Capital: {{ item.capitalBalance | currency }}</p>
+      <p>Fecha de Pago: {{ item.payDate | date }}</p>
+      <p>Estado: {{ item.verifText }}</p>
+
+      <div *ngIf="item.paymentVouchers && item.paymentVouchers.length > 0">
+        <h4>Vouchers</h4>
+        <div *ngFor="let voucher of item.paymentVouchers">
+          <p>Operación: {{ voucher.operationNumber }}</p>
+          <p>Método de Pago: {{ voucher.nameMethodSubTipoPago }}</p>
+          <p>Nota: {{ voucher.note }}</p>
+          <div *ngIf="voucher.base64">
+            <img [src]="voucher.base64" alt="Imagen de Voucher" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

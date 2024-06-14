@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { ScheduleComponent } from '../schedule/schedule.component';
+import { Router } from '@angular/router';
 
 interface Package {
   id: number;
@@ -64,14 +66,15 @@ interface Suscription {
 @Component({
   selector: 'app-memberships',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, ScheduleComponent],
   templateUrl: './memberships.component.html',
   styleUrls: ['./memberships.component.css'],
 })
 export class MembershipsComponent implements OnInit {
   suscriptions: Suscription[] = [];
+  selectedSuscriptionId: number | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchMemberships();
@@ -95,5 +98,9 @@ export class MembershipsComponent implements OnInit {
         );
       }
     );
+  }
+
+  goToSchedule(suscriptionId: number): void {
+    this.router.navigate(['schedule', suscriptionId]);
   }
 }

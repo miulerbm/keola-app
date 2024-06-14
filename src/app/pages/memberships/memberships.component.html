@@ -10,16 +10,17 @@
         <li class="list-group-item">Usuario ID: {{ suscription.idUser }}</li>
         <li class="list-group-item">Estado: {{ suscription.statusName }}</li>
         <li class="list-group-item">
-          Fecha de Creación: {{ suscription.creationDate }}
+          Fecha de Creación: {{ suscription.creationDate | date }}
         </li>
         <li class="list-group-item">
-          Precio: {{ suscription.packageDetailResponse.price }}
+          Precio: {{ suscription.packageDetailResponse.price | currency }}
         </li>
         <li class="list-group-item">
           Cuotas: {{ suscription.packageDetailResponse.numberQuotas }}
         </li>
         <li class="list-group-item">
-          Precio Inicial: {{ suscription.packageDetailResponse.initialPrice }}
+          Precio Inicial:
+          {{ suscription.packageDetailResponse.initialPrice | currency }}
         </li>
         <li class="list-group-item">
           Descripción de la Cuota: {{ suscription.quotaDescription }}
@@ -31,6 +32,13 @@
           Número de Invitados: {{ suscription.numberGuests }}
         </li>
       </ul>
+      <button
+        (click)="goToSchedule(suscription.id)"
+        class="btn btn-primary mt-3"
+      >
+        Ver Cronograma
+      </button>
     </div>
   </div>
+  <div *ngIf="selectedSuscriptionId"></div>
 </div>
