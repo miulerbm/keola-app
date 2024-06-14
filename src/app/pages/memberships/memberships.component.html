@@ -1,51 +1,55 @@
 <div class="container my-5">
-  <h2 class="text-center mb-4">Lista de Membresías</h2>
+  <h2 class="text-center mb-4">
+    Lista de Membresías (UserID: {{ suscriptions[0].idUser }})
+  </h2>
   <div *ngIf="suscriptions.length === 0" class="alert alert-info text-center">
     No se encontraron membresías.
   </div>
   <div class="table-responsive">
-    <table class="custom-table">
-      <thead>
-        <tr>
-          <th>Nombre del Paquete</th>
-          <th>Descripción</th>
-          <th>ID</th>
-          <th>Usuario ID</th>
-          <th>Estado</th>
-          <th>Fecha de Creación</th>
-          <th>Precio</th>
-          <th>Cuotas</th>
-          <th>Precio Inicial</th>
-          <th>Descripción de la Cuota</th>
-          <th class="beneficiaries">Beneficiarios</th>
-          <th>Número de Invitados</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let suscription of suscriptions">
-          <td>{{ suscription.package.name }}</td>
-          <td>{{ suscription.package.description }}</td>
-          <td>{{ suscription.id }}</td>
-          <td>{{ suscription.idUser }}</td>
-          <td>{{ suscription.statusName }}</td>
-          <td>{{ suscription.creationDate | date }}</td>
-          <td>{{ suscription.packageDetailResponse.price | currency }}</td>
-          <td>{{ suscription.packageDetailResponse.numberQuotas }}</td>
-          <td>
-            {{ suscription.packageDetailResponse.initialPrice | currency }}
-          </td>
-          <td>{{ suscription.quotaDescription }}</td>
-          <td class="beneficiaries">{{ suscription.beneficiaries }}</td>
-          <td>{{ suscription.numberGuests }}</td>
-          <td>
-            <button (click)="goToSchedule(suscription.id)" class="btn-primary">
-              Ver Cronograma
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="scrollable-table">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Nombre del Paquete</th>
+            <th>Descripción</th>
+            <th>ID</th>
+            <th>Estado</th>
+            <th>Fecha de Creación</th>
+            <th>Precio</th>
+            <th>Cuotas</th>
+            <th>Precio Inicial</th>
+            <th>Descripción de la Cuota</th>
+            <th class="beneficiaries">Beneficiarios</th>
+            <th>Número de Invitados</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let suscription of suscriptions">
+            <td>{{ suscription.package.name }}</td>
+            <td>{{ suscription.package.description }}</td>
+            <td>{{ suscription.id }}</td>
+            <td>{{ suscription.statusName }}</td>
+            <td>{{ suscription.creationDate | date }}</td>
+            <td>{{ suscription.packageDetailResponse.price | currency }}</td>
+            <td>{{ suscription.packageDetailResponse.numberQuotas }}</td>
+            <td>
+              {{ suscription.packageDetailResponse.initialPrice | currency }}
+            </td>
+            <td>{{ suscription.quotaDescription }}</td>
+            <td class="beneficiaries">{{ suscription.beneficiaries }}</td>
+            <td>{{ suscription.numberGuests }}</td>
+            <td>
+              <button
+                (click)="goToSchedule(suscription.id)"
+                class="btn btn-primary"
+              >
+                Ver Cronograma
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div *ngIf="selectedSuscriptionId"></div>
 </div>
