@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Lista de Membresías</h2>
+  <div *ngIf="suscriptions.length === 0">No se encontraron membresías.</div>
+  <div *ngFor="let suscription of suscriptions" class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ suscription.package.name }}</h5>
+      <p class="card-text">{{ suscription.package.description }}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">ID: {{ suscription.id }}</li>
+        <li class="list-group-item">Usuario ID: {{ suscription.idUser }}</li>
+        <li class="list-group-item">Estado: {{ suscription.statusName }}</li>
+        <li class="list-group-item">
+          Fecha de Creación: {{ suscription.creationDate }}
+        </li>
+        <li class="list-group-item">
+          Precio: {{ suscription.packageDetailResponse.price }}
+        </li>
+        <li class="list-group-item">
+          Cuotas: {{ suscription.packageDetailResponse.numberQuotas }}
+        </li>
+        <li class="list-group-item">
+          Precio Inicial: {{ suscription.packageDetailResponse.initialPrice }}
+        </li>
+        <li class="list-group-item">
+          Descripción de la Cuota: {{ suscription.quotaDescription }}
+        </li>
+        <li class="list-group-item">
+          Beneficiarios: {{ suscription.beneficiaries }}
+        </li>
+        <li class="list-group-item">
+          Número de Invitados: {{ suscription.numberGuests }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.container {
+  margin-top: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+}
+
+.card-body {
+  background-color: #f9f9f9;
+}
+
+.list-group-item {
+  background-color: #fff;
+}
