@@ -2,6 +2,16 @@
   margin-top: 20px;
 }
 
+.title-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-display {
+  scale: 1.5;
+}
+
 .schedule-item {
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -66,6 +76,18 @@
 
   .card-title {
     font-size: 1em;
+  }
+
+  .title-bar h2 {
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .icon-display {
+    scale: 1;
   }
 
   .table-sm th,

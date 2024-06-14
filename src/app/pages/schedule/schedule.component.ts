@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 interface PaymentSchedule {
   idPayment: number;
@@ -35,7 +36,7 @@ interface PaymentSchedule {
 @Component({
   selector: 'app-schedule',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css'],
 })

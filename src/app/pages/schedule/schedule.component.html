@@ -1,8 +1,20 @@
 <div class="container my-5">
-  <h2 class="text-center mb-4">
-    Cronograma de la Suscripción {{ suscriptionId }}
-    {{ schedule[0].idSuscription }}
-  </h2>
+  <div class="title-bar">
+    <h2 class="mb-4">
+      <a href="/memberships">
+        <mat-icon
+          class="icon-display"
+          aria-hidden="false"
+          aria-label="Back arrow"
+        >
+          arrow_back
+        </mat-icon>
+      </a>
+      Cronograma de la Suscripción {{ suscriptionId }}
+      {{ schedule[0].idSuscription }}
+    </h2>
+  </div>
+
   <div *ngIf="schedule.length === 0" class="alert alert-info text-center">
     No se encontró cronograma.
   </div>
