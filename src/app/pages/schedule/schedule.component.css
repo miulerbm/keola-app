@@ -3,9 +3,10 @@
 }
 
 .schedule-item {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .schedule-item .card-body {
@@ -13,37 +14,42 @@
 }
 
 .card-title {
-  font-size: 1.2em;
+  font-size: 1.1em;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.card-text {
-  margin-bottom: 8px;
-  font-size: 0.95em;
+.table-sm th,
+.table-sm td {
+  font-size: 0.85em;
+  padding: 0.35rem;
 }
 
 .vouchers h6 {
-  font-size: 1.1em;
+  font-size: 1em;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .voucher {
-  background-color: #ffffff;
+  background-color: #f8f8f8;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #e0e0e0;
   border-radius: 5px;
 }
 
 .voucher .card-text {
   margin-bottom: 5px;
-  font-size: 0.9em;
+  font-size: 0.85em;
 }
 
 .voucher-image img {
   max-width: 100%;
   height: auto;
+  max-height: 150px; /* Limita la altura de la imagen */
   border: 1px solid #ddd;
   border-radius: 5px;
+  object-fit: contain; /* Ajusta la imagen para que se adapte sin distorsión */
 }
 
 .alert {
@@ -62,12 +68,14 @@
     font-size: 1em;
   }
 
-  .card-text {
-    font-size: 0.85em;
+  .table-sm th,
+  .table-sm td {
+    font-size: 0.75em;
+    padding: 0.25rem;
   }
 
   .vouchers h6 {
-    font-size: 1em;
+    font-size: 0.95em;
   }
 
   .voucher .card-text {

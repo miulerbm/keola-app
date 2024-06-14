@@ -71,4 +71,35 @@ export class ScheduleComponent implements OnInit {
       }
     );
   }
+
+  validatePayment(idSuscription: number, idPayment: number) {
+    const payload = {
+      IdSuscription: idSuscription,
+      ListIdPaymentsValidate: [idPayment],
+      IsAcceptedPayment: 1,
+      ReasonRejection: {
+        id: idPayment,
+        Detalle: '',
+      },
+    };
+
+    this.http
+      .post('https://inclubtest.com:2053/api/payment/validate', payload)
+      .subscribe(
+        (response) => {
+          this.updatePaymentStatus(idPayment, 1);
+        },
+        (error) => {
+          console.error('Error validating payment:', error);
+        }
+      );
+  }
+
+  updatePaymentStatus(idPayment: number, newStatus: number) {
+    const payment = this.schedule.find((item) => item.idPayment === idPayment);
+    if (payment) {
+      payment.verif = newStatus;
+      payment.verifText = newStatus === 1 ? 'Activo' : 'Inactivo';
+    }
+  }
 }

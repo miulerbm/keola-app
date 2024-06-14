@@ -21,11 +21,11 @@ export const routes: Routes = [
     component: LayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-        canActivate: [AuthGuard],
-      },
+      // {
+      //   path: 'dashboard',
+      //   component: DashboardComponent,
+      //   canActivate: [AuthGuard],
+      // },
       {
         path: 'memberships',
         component: MembershipsComponent,
